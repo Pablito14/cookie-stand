@@ -7,9 +7,12 @@ var firstAndPike = {
   avgHourlyCustomer,
   
   // 15 times please
-  doAThing: funtion(){
-  hours:[],
-    avgHourlyCustomer = Math.getRandomInt(minHCustomer,maxHCustomer)
+  getHourlyCustomers: function(location){
+      var min = Math.floor(location.minHCustomer);
+      var max = Math.ciel(location.maxHCustomer);
+      return Math.floor(Math.random()) * (max - min +1) + min
+  }
+  
   },
 
 };
