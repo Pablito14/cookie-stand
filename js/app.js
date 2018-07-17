@@ -54,6 +54,11 @@ var firstAndPike = {
     var mainEl = document.getElementById('main-content');
     mainEl.appendChild(ulEl);
   },
+  };
+
+  var stores = [firstAndPike, ];
+  for(var store of stores){
+      store.render();
   }
 /*
 // FUNCTION TO CALCULATE THE "amounts of cookies purchased for each hour at each location using average cookies purchased and the random number of customers generated"
