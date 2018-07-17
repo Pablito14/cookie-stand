@@ -5,19 +5,10 @@ var firstAndPike = {
   maxHourlyCustomer: 65,
   avgCookieSalePerCustomer: 6.3,
   avgHourlyCustomer: genRandomHourlyCustomers(firstAndPike),
-  avgHourlyCookieSold: calculateAvgHourlyCookiesSold(firstAndPike), /* TO BE CALCULATED STILL */
-  randomHourlyCustomers: 0, /* TO BE CALCULATED STILL */
+  avgHourlyCookieSold: calculateAvgHourlyCookiesSold(firstAndPike),
   amountOfCookiesSoldPH: [], /* TO BE CALCULATED STILL */
 
-  /* TO BE DETERMINED STILL
-  getHourlyCookiesSold: function(){
-    for(var i = 0; i < 14; i++){
-      this.avgHourlyCookieSold = this.avgHourlyCustomer * this.avgCookieSalePerCustomer;
-      this.avgHourlyCookieSold.push(this.amountOfCookiesSoldPH);
-      i++;
-    }
-  }
-  */
+ 
 
 
 };
