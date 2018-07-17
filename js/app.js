@@ -1,7 +1,5 @@
 'use strict';
 
-
-
 var firstAndPike = {
   minHCustomer: 23,
   maxHCustomer: 65,
@@ -31,4 +29,8 @@ var genRandomHourlyCustomers = function(location){
   return randomHourlyCustomers;
 };
 
-genRandomHourlyCustomers(firstAndPike);
+var calculateAvgHourlyCookiesSold = function(location){
+  for(var i = 0; i < 14; i++){
+    location.avgHourlyCookieSold = location.randomHourlyCustomers * location.avgCookieSale;
+  }
+};
