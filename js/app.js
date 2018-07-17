@@ -23,15 +23,15 @@ var firstAndPike = {
   },
 
   calculateSales: function(){
-      firstAndPike.calculateCustomers();
+    firstAndPike.calculateCustomers();
 
-      for (var numCustomers of firstAndPike.customersPerHour){
-          var cookies = Math.ceil(firstAndPike.avgCookieSalePerCustomer * numCustomers);
-          firstAndPike.cookiesPerHour.push(cookies);
-          firstAndPike.dailyTotal += cookies;
-      }
-      return firstAndPike.cookiesPerHour;
-  }
+    for (var numCustomers of firstAndPike.customersPerHour){
+      var cookies = Math.ceil(firstAndPike.avgCookieSalePerCustomer * numCustomers);
+      firstAndPike.cookiesPerHour.push(cookies);
+      firstAndPike.dailyTotal += cookies;
+    }
+    return firstAndPike.cookiesPerHour;
+  },
 
   render: function(){
     firstAndPike.calculateSales();
@@ -54,12 +54,12 @@ var firstAndPike = {
     var mainEl = document.getElementById('main-content');
     mainEl.appendChild(ulEl);
   },
-  };
+};
 
-  var stores = [firstAndPike, ];
-  for(var store of stores){
-      store.render();
-  }
+var stores = [firstAndPike, ];
+for(var store of stores){
+  store.render();
+}
 /*
 // FUNCTION TO CALCULATE THE "amounts of cookies purchased for each hour at each location using average cookies purchased and the random number of customers generated"
 var calculateAvgHourlyCookiesSold = function(location){
