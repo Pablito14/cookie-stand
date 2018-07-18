@@ -1,5 +1,8 @@
 'use strict';
 
+//
+//
+
 function genRandomHourlyCustomers(min, max){
   return Math.random() * (max - min) + min;
 }
@@ -14,14 +17,17 @@ var firstAndPike = {
   cookiesPerHour: [],
   dailyTotal: 0,
   calculateCustomers: function(){
+    //
+    //
+    //
 
+    //
     for(var hour of firstAndPike.hours){
       var rando = genRandomHourlyCustomers(firstAndPike.minHourlyCustomer, firstAndPike.maxHourlyCustomer);
       firstAndPike.customersPerHour.push(rando);
     }
     return firstAndPike.customersPerHour;
   },
-
   calculateSales: function(){
     firstAndPike.calculateCustomers();
 
@@ -32,7 +38,6 @@ var firstAndPike = {
     }
     return firstAndPike.cookiesPerHour;
   },
-
   render: function(){
     firstAndPike.calculateSales();
 
@@ -56,18 +61,9 @@ var firstAndPike = {
   },
 };
 
+
+//
 var stores = [firstAndPike, ];
 for(var store of stores){
   store.render();
 }
-/*
-// FUNCTION TO CALCULATE THE "amounts of cookies purchased for each hour at each location using average cookies purchased and the random number of customers generated"
-var calculateAvgHourlyCookiesSold = function(location){
-  for(var i = 0; i < 14; i++){
-    location.avgHourlyCookieSold = location.randomHourlyCustomers * location.avgCookieSalePerCustomer;
-    location.amountOfCookiesSoldPH.push(location.avgHourlyCookieSold);
-    console.log(location.amountOfCookiesSoldPH);
-  }
-  console.log(location.amountOfCookiesSoldPH);
-};
-console.log(location.amountOfCookiesSoldPH); */
