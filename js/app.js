@@ -3,52 +3,56 @@
 function genRandomHourlyCustomers(min, max){
   return Math.random() * (max - min) + min;
 }
+// hours: ['6am: ', '7am: ', '8am: ', '9am: ', '10am: ', '11am: ', '12pm: ', '1pm: ', '2pm: ', '3pm: ', '4pm: ', '5pm: ', '6pm: ', '7pm: ', '8pm: '] Perhaps better used as a global variable?
 
-var firstAndPike = {
+var store = {
+  // attributes
   name: 'First and Pike',
   minHourlyCustomer: 23,
   maxHourlyCustomer: 65,
   avgCookieSalePerCustomer: 6.3,
-  hours: [],
+  hours: ['6am: ', '7am: ', '8am: ', '9am: ', '10am: ', '11am: ', '12pm: ', '1pm: ', '2pm: ', '3pm: ', '4pm: ', '5pm: ', '6pm: ', '7pm: ', '8pm: '],
   customersPerHour: [],
   cookiesPerHour: [],
   dailyTotal: 0,
+
+  // methods
   calculateCustomers: function(){
 
-    for(var hour of firstAndPike.hours){
-      var rando = genRandomHourlyCustomers(firstAndPike.minHourlyCustomer, firstAndPike.maxHourlyCustomer);
-      firstAndPike.customersPerHour.push(rando);
+    for(var hour of store.hours){
+      var rando = genRandomHourlyCustomers(store.minHourlyCustomer, store.maxHourlyCustomer);
+      store.customersPerHour.push(rando);
     }
-    return firstAndPike.customersPerHour;
+    return store.customersPerHour;
   },
 
   calculateSales: function(){
-    firstAndPike.calculateCustomers();
+    store.calculateCustomers();
 
-    for (var numCustomers of firstAndPike.customersPerHour){
-      var cookies = Math.ceil(firstAndPike.avgCookieSalePerCustomer * numCustomers);
-      firstAndPike.cookiesPerHour.push(cookies);
-      firstAndPike.dailyTotal += cookies;
+    for (var numCustomers of store.customersPerHour){
+      var cookies = Math.ceil(store.avgCookieSalePerCustomer * numCustomers);
+      store.cookiesPerHour.push(cookies);
+      store.dailyTotal += cookies;
     }
-    return firstAndPike.cookiesPerHour;
+    return store.cookiesPerHour;
   },
 
   render: function(){
-    firstAndPike.calculateSales();
+    store.calculateSales();
 
     var ulEl = document.createElement('ul');
     var h2El = document.createElement('h2');
-    h2El.textContent = firstAndPike.name;
+    h2El.textContent = store.name;
     ulEl.appendChild(h2El);
 
-    for (var idx in firstAndPike.hours) {
+    for (var idx in store.hours) {
       var liEl = document.createElement('li');
-      liEl.textContent = firstAndPike.hours[idx] + ': ' + firstAndPike.cookiesPerHour[idx] + ' cookies';
+      liEl.textContent = store.hours[idx] + ': ' + store.cookiesPerHour[idx] + ' cookies';
       ulEl.appendChild(liEl);
     }
 
     var liEltwo = document.createElement('li');
-    liEltwo.textContent = 'Total: ' + firstAndPike.dailyTotal;
+    liEltwo.textContent = 'Total: ' + store.dailyTotal;
     ulEl.appendChild(liEltwo);
 
     var mainEl = document.getElementById('main-content');
@@ -56,7 +60,7 @@ var firstAndPike = {
   },
 };
 
-var stores = [firstAndPike, ];
+var stores = [store, ];
 for(var store of stores){
   store.render();
 }
