@@ -22,14 +22,14 @@ var firstAndPike = {
     //
 
     //
-    for(var hour of firstAndPike.hours){
-      var rando = genRandomHourlyCustomers(firstAndPike.minHourlyCustomer, firstAndPike.maxHourlyCustomer);
+    for(var hour of firstAndPike.hours){ // Should this be refactorered to be this or location.min/max/cph?
+      var rando = genRandomHourlyCustomers(firstAndPike.minHourlyCustomer, firstAndPike.maxHourlyCustomer); 
       firstAndPike.customersPerHour.push(rando);
     }
     return firstAndPike.customersPerHour;
   },
   calculateSales: function(){
-    firstAndPike.calculateCustomers();
+    firstAndPike.calculateCustomers(); // Should this be refactorered to be this or location.min/max/cph?
 
     for (var numCustomers of firstAndPike.customersPerHour){
       var cookies = Math.ceil(firstAndPike.avgCookieSalePerCustomer * numCustomers);
@@ -38,7 +38,7 @@ var firstAndPike = {
     }
     return firstAndPike.cookiesPerHour;
   },
-  render: function(){
+  render: function(){ // Should this be refactorered to be this or location.min/max/cph?
     firstAndPike.calculateSales();
 
     var ulEl = document.createElement('ul');
@@ -46,13 +46,13 @@ var firstAndPike = {
     h2El.textContent = firstAndPike.name;
     ulEl.appendChild(h2El);
 
-    for (var idx in firstAndPike.hours) {
+    for (var idx in firstAndPike.hours) { // Should this be refactorered to be this or location.min/max/cph?
       var liEl = document.createElement('li');
       liEl.textContent = firstAndPike.hours[idx] + ': ' + firstAndPike.cookiesPerHour[idx] + ' cookies';
       ulEl.appendChild(liEl);
     }
 
-    var liEltwo = document.createElement('li');
+    var liEltwo = document.createElement('li'); // Should this be refactorered to be this or location.min/max/cph?
     liEltwo.textContent = 'Total: ' + firstAndPike.dailyTotal;
     ulEl.appendChild(liEltwo);
 
