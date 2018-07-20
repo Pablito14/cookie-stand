@@ -31,7 +31,7 @@ var store = {
     for (var numOfCustomersInHour of store.randomHourlyCustomers){ // for every element in the array [randomHourlyCustomers]
       var cookies = Math.ceil(store.avgCookieSalePerCustomer * numOfCustomersInHour); // cookies will be assigned the value of the store avgSale*[genOneRandomCustomer] (the average rate * the randomized number array)
       store.randomHourlyCookiesArray.push(cookies); // push the amount of cookies purchased into the array
-      store.dailyTotal += cookies;
+      store.dailyTotal += cookies; // for each houlry cookie sales, add that to this attribute
     }
     return store.randomHourlyCookiesArray;
   },
@@ -39,13 +39,13 @@ var store = {
   render: function(){
     store.calculateSales();
 
-    var ulEl = document.createElement('ul');
+    var ulEl = document.createElement('ul'); // make some html variables and name them what their tag is + El(for element)
     var h2El = document.createElement('h2');
-    h2El.textContent = store.name;
-    ulEl.appendChild(h2El);
+    h2El.textContent = store.name; //SYNTAX: var.nodetype = attribute
+    ulEl.appendChild(h2El); // put h2E1 to -> ulEl
 
-    for (var idx in store.hours) {
-      var liEl = document.createElement('li');
+    for (var idx in store.hours) { // for every hour the store is open
+      var liEl = document.createElement('li'); // create a new list element named liEl
       liEl.textContent = store.hours[idx] + ': ' + store.randomHourlyCookiesArray[idx] + ' cookies';
       ulEl.appendChild(liEl);
     }
@@ -63,14 +63,3 @@ var stores = [store, ];
 for(var store of stores){
   store.render();
 }
-/*
-// FUNCTION TO CALCULATE THE "amounts of cookies purchased for each hour at each location using average cookies purchased and the random number of customers generated"
-var calculateAvgHourlyCookiesSold = function(location){
-  for(var i = 0; i < 14; i++){
-    location.avgHourlyCookieSold = location.randomHourlyCustomers * location.avgCookieSalePerCustomer;
-    location.amountOfCookiesSoldPH.push(location.avgHourlyCookieSold);
-    console.log(location.amountOfCookiesSoldPH);
-  }
-  console.log(location.amountOfCookiesSoldPH);
-};
-console.log(location.amountOfCookiesSoldPH); */
