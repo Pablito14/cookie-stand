@@ -46,16 +46,16 @@ var store = {
 
     for (var idx in store.hours) { // for every hour the store is open
       var liEl = document.createElement('li'); // create a new list element named liEl
-      liEl.textContent = store.hours[idx] + ': ' + store.randomHourlyCookiesArray[idx] + ' cookies';
-      ulEl.appendChild(liEl);
+      liEl.textContent = store.hours[idx] + ': ' + store.randomHourlyCookiesArray[idx] + ' cookies'; //construct an 'hour' + cookies sold + 'cookies'
+      ulEl.appendChild(liEl); // put it in the unordered list element (the parent)
     }
 
-    var liEltwo = document.createElement('li');
-    liEltwo.textContent = 'Total: ' + store.dailyTotal;
-    ulEl.appendChild(liEltwo);
+    var liEltwo = document.createElement('li'); // make a new <li> element called liEltwo
+    liEltwo.textContent = 'Total: ' + store.dailyTotal; // its content will be 'total' + daily total
+    ulEl.appendChild(liEltwo); // put it into the unordered list
 
-    var mainEl = document.getElementById('main-content');
-    mainEl.appendChild(ulEl);
+    var mainEl = document.getElementById('main-content'); // This looks for the main-content ID, it does not create it!
+    mainEl.appendChild(ulEl); // append dat
   },
 };
 
