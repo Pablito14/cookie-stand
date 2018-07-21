@@ -59,6 +59,60 @@ var store = {
   },
 };
 
+// var store = {
+  
+//   name: '',
+//   minHourlyCustomer: 23,
+//   maxHourlyCustomer: 65,
+//   avgCookieSalePerCustomer: 6.3,
+//   hours: ['6am: ', '7am: ', '8am: ', '9am: ', '10am: ', '11am: ', '12pm: ', '1pm: ', '2pm: ', '3pm: ', '4pm: ', '5pm: ', '6pm: ', '7pm: ', '8pm: '],
+//   randomHourlyCustomers: [],
+//   randomHourlyCookiesArray: [],
+//   dailyTotal: 0,
+
+//   // methods
+//   generateCustomers: function(){
+//     for(var hour of store.hours){
+//       var rando = genOneRandomCustomer(store.minHourlyCustomer, store.maxHourlyCustomer);
+//       store.randomHourlyCustomers.push(rando);
+//     }
+//     return store.randomHourlyCustomers;
+//   },
+
+//   calculateSales: function(){
+//     store.generateCustomers();
+
+//     for (var numOfCustomersInHour of store.randomHourlyCustomers){
+//       var cookies = Math.ceil(store.avgCookieSalePerCustomer * numOfCustomersInHour);
+//       store.randomHourlyCookiesArray.push(cookies);
+//       store.dailyTotal += cookies;
+//     }
+//     return store.randomHourlyCookiesArray;
+//   },
+
+//   render: function(){
+//     store.calculateSales();
+
+//     var ulEl = document.createElement('ul');
+//     var h2El = document.createElement('h2');
+//     h2El.textContent = store.name;
+//     ulEl.appendChild(h2El);
+
+//     for (var idx in store.hours) {
+//       var liEl = document.createElement('li');
+//       liEl.textContent = store.hours[idx] + ': ' + store.randomHourlyCookiesArray[idx] + ' cookies';
+//       ulEl.appendChild(liEl);
+//     }
+
+//     var liEltwo = document.createElement('li');
+//     liEltwo.textContent = 'Total: ' + store.dailyTotal;
+//     ulEl.appendChild(liEltwo);
+
+//     var mainEl = document.getElementById('main-content');
+//     mainEl.appendChild(ulEl);
+//   },
+// };
+
 var stores = [store, ];
 for(var store of stores){
   store.render();
