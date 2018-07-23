@@ -57,7 +57,18 @@ Store.prototype.render = function(){
   trEl.appendChild(storeName);
 
   for(var i = 0; i < hours.length; i++){
+    var class1 = 'green';
+    var class2 = 'pink';
+    var classToChange;
+    if(i % 2 === 0){
+      classToChange = class1;
+    } else {
+      classToChange = class2;
+    }
+
     var tdEl = document.createElement('td');
+    tdEl.className = classToChange;
+    console.log('random thing', tdEl);
     tdEl.textContent = this.randomHourlyCookiesArray[i];
     trEl.appendChild(tdEl);
   }
@@ -86,6 +97,8 @@ function makeTopRow(){
   trEl.appendChild(totH);
 }
 
+makeTopRow();
+
 var firstStore = new Store('First and Pike', 23, 65, 6.3);
 var secondStore = new Store('SeaTac Airport', 3, 24, 1.2);
 var thirdStore = new Store('Seattle Center', 11, 38, 3.7);
@@ -95,43 +108,4 @@ var fifthStore = new Store('Alki', 2, 16, 4.6);
 function makeBotRow(){
 
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-// Store.prototype.render = function(){
-//   this.calculateSales();
-
-//   // var trE1 = document.createElement('tr'); // make a new row
-//   // var tbleData = document.getElementById('Table-goes-heresy').firstElementChild; // put  the table in there
-//   // tbleData.appendChild(trE1);
-
-
-//   var ulEl = document.createElement('ul');
-//   var h2El = document.createElement('h2');
-//   h2El.textContent = this.name;
-//   ulEl.appendChild(h2El);
-
-//   for (var idx in hours) {
-//     var liEl = document.createElement('li');
-//     liEl.textContent = hours[idx] + ': ' + this.randomHourlyCookiesArray[idx] + ' cookies';
-//     ulEl.appendChild(liEl);
-//   }
-
-//   var liEltwo = document.createElement('li');
-//   liEltwo.textContent = 'Total: ' + this.dailyTotal;
-//   ulEl.appendChild(liEltwo);
-//   var mainEl = document.getElementById('Table-goes-heresy');
-//   mainEl.appendChild(ulEl);
-// };
 
