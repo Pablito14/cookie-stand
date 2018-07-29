@@ -6,9 +6,6 @@ var stores = [];
 function genOneRandomCustomer(min, max){
   return Math.random() * (max - min) + min;
 }
-
-
-
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 function Store(name, min, max, average){
   this.name = name;
@@ -22,18 +19,12 @@ function Store(name, min, max, average){
   this.render();
 }
 
-
 Store.prototype.generateCustomers = function(){
   for(var hour of hours){
     var rando = genOneRandomCustomer(this.minHourlyCustomer, this.maxHourlyCustomer);
     this.randomHourlyCustomers.push(rando);
   }
-  // return this.randomHourlyCustomers;
 };
-
-
-// Function to create cookie data AND push into a cph[]
-// within call render
 
 Store.prototype.calculateSales = function(){
   this.generateCustomers();
@@ -42,20 +33,16 @@ Store.prototype.calculateSales = function(){
     this.randomHourlyCookiesArray.push(cookies);
     this.dailyTotal += cookies;
   }
-  // return this.randomHourlyCookiesArray;
 };
 
 Store.prototype.render = function(){
   this.calculateSales();
-
   var trEl = document.createElement('tr');
   var grabTable = document.getElementById('Table-goes-heresy').firstElementChild;
   grabTable.appendChild(trEl);
-
   var storeName = document.createElement('td');
   storeName.textContent = this.name;
   trEl.appendChild(storeName);
-
   for(var i = 0; i < hours.length; i++){
     var class1 = 'green';
     var class2 = 'pink';
@@ -65,14 +52,12 @@ Store.prototype.render = function(){
     } else {
       classToChange = class2;
     }
-
     var tdEl = document.createElement('td');
     tdEl.className = classToChange;
     console.log('random thing', tdEl);
     tdEl.textContent = this.randomHourlyCookiesArray[i];
     trEl.appendChild(tdEl);
   }
-
   var totalEl = document.createElement('td');
   totalEl.textContent = this.dailyTotal;
   trEl.appendChild(tdEl);
@@ -86,7 +71,6 @@ function makeTopRow(){
   tableEl.appendChild(trEl);
   var blank = document.createElement('td');
   trEl.appendChild(blank);
-
   for(var i = 0; i < hours.length; i++){
     var tdEl = document.createElement('th');
     tdEl.textContent = hours[i];
@@ -108,4 +92,3 @@ var fifthStore = new Store('Alki', 2, 16, 4.6);
 function makeBotRow(){
 
 }
-
