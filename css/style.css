@@ -1,12 +1,25 @@
 #webpageHeader{
-    font-family: fantasy
+    font-family: fantasy;
+    
 }
 
-
+input{
+    width: 75px;
+    height: 20px;
+}
 .pink{
     background-color: salmon
 }
 
 .green{
     background-color: green
+}
+.link{
+    position: fixed;
+    top: 0px;
+    right: 10px;
+}
+img{
+    width: 250px;
+
 }
