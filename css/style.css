@@ -1,5 +1,6 @@
 #webpageHeader{
-    font-family: fantasy
+    font-family: fantasy;
+    
 }
 
 input{
@@ -12,4 +13,13 @@ input{
 
 .green{
     background-color: green
+}
+.link{
+    position: fixed;
+    top: 0px;
+    right: 10px;
+}
+img{
+    width: 250px;
+
 }

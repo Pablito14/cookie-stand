@@ -81,6 +81,28 @@ function makeTopRow(){
   trEl.appendChild(totH);
 }
 
+// var nameEl = document.getElementById('name');
+// var minEl = document.getElementById('min');
+// var maxEl = document.getElementById('max');
+// var avgEl = document.getElementById('avg');
+
+var formEl = document.getElementById('formMain');
+formEl.addEventListener('submit', function(event) {
+  event.preventDefault();
+  console.log('event.target', event);
+  console.log(event.target.storename.value);
+  var storename = event.target.name.value;
+  var minC = event.target.minC.value;
+  var maxC = event.target.maxC.value;
+  var avgS = event.target.avgC.value;
+  var submitStore = new Store(storename, minC, maxC, avgS, [], [], 0);
+  for (var i = 0; i < hours.length; i++) {
+    submitStore.render();
+  }
+}
+);
+
+
 makeTopRow();
 
 var firstStore = new Store('First and Pike', 23, 65, 6.3);
