@@ -1,40 +1,48 @@
 'use strict';
 
 
-var hours = ['6am: ', '7am: ', '8am: ', '9am: ', '10am: ', '11am: ', '12pm: ', '1pm: ', '2pm: ', '3pm: ', '4pm: ', '5pm: ', '6pm: ', '7pm: ', '8pm: '];
+var hours = ['6am ', '7am ', '8am ', '9am ', '10am ', '11am ', '12pm ', '1pm ', '2pm ', '3pm ', '4pm ', '5pm ', '6pm ', '7pm ', '8pm '];
 var stores = [];
-function genOneRandomCustomer(min, max){
-  return Math.random() * (max - min) + min;
-}
-
-function Store(name, min, max, average){
+var totals = [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0];
+/*************************************************************/
+function Store(name, minCustomer, maxCustomer, average){
   this.name = name;
-  this.minHourlyCustomer = min;
-  this.maxHourlyCustomer = max;
+  this.minCustomer = minCustomer;
+  this.maxCustomer = maxCustomer;
   this.avgCookieSalePerCustomer = average;
-  this.randomHourlyCookiesArray = [];
-  this.randomHourlyCustomers = [];
-  this.dailyTotal = 0;
   stores.push(this);
-  this.render();
 }
-
-Store.prototype.generateCustomers = function(){
-  for(var hour of hours){
-    var rando = genOneRandomCustomer(this.minHourlyCustomer, this.maxHourlyCustomer);
-    this.randomHourlyCustomers.push(rando);
-  }
+/*************************************************************/
+Store.prototype.generateCustomers = function(min, max){
+  return Math.random() * (max - min) + min;
 };
 
 Store.prototype.calculateSales = function(){
-  this.generateCustomers();
-  for (var numOfCustomersInHour of this.randomHourlyCustomers){
-    var cookies = Math.ceil(this.avgCookieSalePerCustomer * numOfCustomersInHour);
-    this.randomHourlyCookiesArray.push(cookies);
-    this.dailyTotal += cookies;
-  }
+  return Math.floor(this.generateCustomers(this.minCustomer, this.maxCustomer) * this.avgCookieSalePerCustomer)
 };
-
+/************************************************************* */
+function makeHeaderRow(tableElement)
+{
+  // creating a table header element
+  var tableHeaderElement = document.createElement('thead');
+  // creating a first row with hours
+  var trTableHeaderElement = document.createElement('tr');
+  // put an empty cell at A1
+  trTableHeaderElement.appendChild(document.createElement('td'));
+  // run throught the array of hours and create a cell for each element
+  for(var hour of hours)
+  {
+    var tdHeaderElement = document.createElement('td');
+    tdHeaderElement.appendChild(document.createTextNode(hour));
+    trTableHeaderElement.appendChild(tdHeaderElement);
+  }
+  // make the last cell, the total cell
+  var tdFirstTotalElement = document.createElement('td');
+  tdFirstTotalElement.appendChild(document.createTextNode('Daiy location Total'));
+  trTableHeaderElement.appendChild(tdFirstTotalElement);
+  
+}
+/*************************************************************/
 Store.prototype.render = function(){
   this.calculateSales();
   var trEl = document.createElement('tr');
@@ -63,24 +71,6 @@ Store.prototype.render = function(){
   trEl.appendChild(tdEl);
 };
 
-function makeTopRow(){
-  var tableEl = document.createElement('table');
-  var location = document.getElementById('Table-goes-heresy');
-  location.appendChild(tableEl);
-  var trEl = document.createElement('tr');
-  tableEl.appendChild(trEl);
-  var blank = document.createElement('td');
-  trEl.appendChild(blank);
-  for(var i = 0; i < hours.length; i++){
-    var tdEl = document.createElement('th');
-    tdEl.textContent = hours[i];
-    trEl.appendChild(tdEl);
-  }
-  var totH = document.createElement('th');
-  totH.textContent ='Totals';
-  trEl.appendChild(totH);
-}
-
 // var nameEl = document.getElementById('name');
 // var minEl = document.getElementById('min');
 // var maxEl = document.getElementById('max');
@@ -103,7 +93,6 @@ formEl.addEventListener('submit', function(event) {
 );
 
 
-makeTopRow();
 
 var firstStore = new Store('First and Pike', 23, 65, 6.3);
 var secondStore = new Store('SeaTac Airport', 3, 24, 1.2);
